@@ -1,7 +1,6 @@
 # Habit Tracker (Local-First)
 
-A local-first Habit Tracker built with a clean, scalable React architecture.
-The goal is to practice real “software architect” fundamentals: feature boundaries, derived state, persistence, and testing.
+A local-first Habit Tracker.
 
 ## Stack baseline
 
