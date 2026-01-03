@@ -1,5 +1,6 @@
+import { todayDay } from "@/shared/lib/day";
 import { Day } from "./checkins";
-import { HabitId } from "./habit";
+import { Habit, HabitId } from "./habit";
 import { HabitState } from "./state";
 
 export const toggleCheckin = (
@@ -23,5 +24,21 @@ export const toggleCheckin = (
       ...checkinsByHabitId,
       [habitId]: updatedDays,
     },
+  };
+};
+
+export const createHabit = (state: HabitState, name: string): HabitState => {
+  if (!name.trim()) return state;
+
+  const newHabit: Habit = {
+    id: crypto.randomUUID(),
+    name,
+    createdAt: todayDay(),
+    archived: false,
+  };
+
+  return {
+    ...state,
+    habits: [...state.habits, newHabit],
   };
 };
