@@ -28,33 +28,39 @@ describe("storageClient", () => {
     localStorage.clear();
   });
 
-  it("setItem stores and retrieves JSON data", () => {
-    setItem(key, state);
-    expect(getItem(key)).toEqual(state);
+  describe("setItem", () => {
+    it("stores and retrieves JSON data", () => {
+      setItem(key, state);
+      expect(getItem(key)).toEqual(state);
+    });
+
+    it("overwrites existing value", () => {
+      setItem(key, { a: 1 });
+      setItem(key, { a: 2 });
+      expect(getItem(key)).toEqual({ a: 2 });
+    });
   });
 
-  it("setItem overwrites existing value", () => {
-    setItem(key, { a: 1 });
-    setItem(key, { a: 2 });
-    expect(getItem(key)).toEqual({ a: 2 });
+  describe("getItem", () => {
+    it("returns null when key does not exist", () => {
+      expect(getItem("missing-key")).toBeNull();
+    });
+
+    it("returns null when stored JSON is corrupted", () => {
+      localStorage.setItem(key, "{ this is not valid JSON");
+      expect(getItem(key)).toBeNull();
+    });
   });
 
-  it("getItem returns null when key does not exist", () => {
-    expect(getItem("missing-key")).toBeNull();
-  });
+  describe("removeItem", () => {
+    it("removes the key", () => {
+      setItem(key, state);
+      removeItem(key);
+      expect(getItem(key)).toBeNull();
+    });
 
-  it("getItem returns null when stored JSON is corrupted", () => {
-    localStorage.setItem(key, "{ this is not valid JSON");
-    expect(getItem(key)).toBeNull();
-  });
-
-  it("removeItem removes the key", () => {
-    setItem(key, state);
-    removeItem(key);
-    expect(getItem(key)).toBeNull();
-  });
-
-  it("removeItem does not throw when key is missing", () => {
-    expect(() => removeItem("missing-key")).not.toThrow();
+    it("does not throw when key is missing", () => {
+      expect(() => removeItem("missing-key")).not.toThrow();
+    });
   });
 });
