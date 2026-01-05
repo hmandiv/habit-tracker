@@ -9,7 +9,7 @@ import type { HabitState } from "../model/state";
 
 import { loadHabitState, saveHabitState } from "@/shared/storage/habitStorage";
 
-// 1) Mock the storage repo module (IMPORTANT: path must match your imports)
+// 1) Mock the storage repo module
 vi.mock("@/shared/storage/habitStorage", () => {
   return {
     loadHabitState: vi.fn(),

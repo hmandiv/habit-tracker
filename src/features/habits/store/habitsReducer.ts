@@ -17,11 +17,11 @@ export function habitsReducer(
 
   switch (type) {
     case "toggleCheckin": {
-      // call your command (pure mutation-by-copy)
+      // call command (pure mutation-by-copy)
       return toggleCheckin(state, habitId, day);
     }
     default: {
-      // exhaustive check (optional)
+      // exhaustive check
       return state;
     }
   }

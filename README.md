@@ -8,7 +8,7 @@ A local-first Habit Tracker.
 - Unit/Component tests: **Vitest** + **React Testing Library**
 - E2E: **Playwright**
 - Lint/Format: **ESLint + Prettier**
-- Optional later: `msw` (not needed for local-first MVP)
+- Optional later: `msw`
 
 ---
 
@@ -38,11 +38,11 @@ Ship with **two screens only**.
 ### 2) Habit Detail — `/habits/:id`
 
 - Edit name / delete
-- Shows recent check-ins (start with a simple list like **last 14 days**, not a full calendar)
+- Shows recent check-ins (a simple list like **last 14 days**, not a full calendar)
 - Mark today done / undo
 - Basic stats:
   - current streak
-  - best streak (optional for MVP; can be added later)
+  - best streak (optional)
   - total check-ins
 
 ---

@@ -1,4 +1,3 @@
-// habitStorage.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { HabitState } from "@/features/habits/model/state";
 import { getItem, setItem } from "./storageClient";

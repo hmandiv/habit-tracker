@@ -16,7 +16,7 @@ export const getCurrentStreak = (today: Day, days?: Day[]): number => {
 
   let streak = 0;
 
-  // Start from today, but if today is not done,
+  // StartS from today, but if today is not done,
   // Option B says: start from yesterday
   let cursor = doneSet.has(today) ? today : previousDay(today);
 
@@ -28,10 +28,10 @@ export const getCurrentStreak = (today: Day, days?: Day[]): number => {
   return streak;
 };
 
-// helper (pure)
+// helper
 const previousDay = (day: Day): Day => {
   const [y, m, d] = day.split("-").map(Number);
-  const date = new Date(y, m - 1, d); // local midnight (safe)
+  const date = new Date(y, m - 1, d); // local midnight
   date.setDate(date.getDate() - 1);
 
   const year = date.getFullYear();
